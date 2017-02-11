@@ -15,6 +15,7 @@ The player movement is a simple first person character controller. Controlled us
 Additional movement typically found in first person games such as sprinting and jumping will not be present partly due to an effort to keep the controller simple and also partly due to the fact that adding some sort of meaningful sprint mechanic will require a stamina system. As the game already as the player managing their power for the torch adding more resource managment might over complicate the game.
 
 Power management:
+-----------------
 Power management is the core of the gameplay mechanic. The creatures that are the threat in the game will only move when in complete darkness. The player will not be able to see the creatures very well when little light is available to them. These elements add up to a mechanic that requires the player to both make sure they use their power wisely and to also charge their torch in times where they know they are safe. 
 In addition to this the frantic action of winding a torch up adds to the intense experience of playing a horror game.
 Threats:
@@ -22,9 +23,10 @@ The core threat of the game is the light fearing creatures. These creatures only
 If the creature comes into collision with the player the player will die and the game will start again. As mentioned before there will be static gas lamps that will provide permanent safety within that area to the player. The creatures will not walk into the radius of these light areas but they will move around them. This will probably be one of the few situations when the player can see the creature moving
 
 Goal:
+-----
 The goal of the game is to collect 3 fuses from around the level and to bring them back. This is a simple mechanic thats main goal is to make the player move along a certain path and then to walk back along that path. This works well with the threat of the game as a player will probably run into a creature one the way to a fuse and then have to walk past it again when returning to the fuse box.
 
--Materials needed-
+# -Materials needed-
 Rotary encoders
 Analog joystick
 Several white led’s
