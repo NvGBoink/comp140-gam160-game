@@ -27,10 +27,10 @@ Goal:
 The goal of the game is to collect 3 fuses from around the level and to bring them back. This is a simple mechanic thats main goal is to make the player move along a certain path and then to walk back along that path. This works well with the threat of the game as a player will probably run into a creature one the way to a fuse and then have to walk past it again when returning to the fuse box.
 
 # -Materials needed-
-Rotary encoders
-Analog joystick
-Several white led’s
-Button
-Large piping for torch casing
-Materials to make crank
-(Possibly gyroscope)
+1. Rotary encoders
+2. Analog joystick
+3. Several white led’s
+4. Arcade button
+5. Large piping for torch casing
+6. Materials to make crank
+7. (Possibly gyroscope)
