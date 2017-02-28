@@ -25,12 +25,12 @@ What I plan on doing is simply having the rotary encoder send its input to the g
 (This image shows a diagram of circuit needed for turning an led on based on a button press)
 
 ## Materials needed:
-Rotary encoder
-Analog joystick
-Several white led’s
-Button
-Large piping for torch casing
-Materials to make crank
-(Possibly gyroscope)
-Several resistor 220 ohm
-Several resistor 10k ohm
+1. Rotary encoder
+2. Analog joystick
+3. Several white led’s
+4. Button
+5. Large piping for torch casing
+6. Materials to make crank
+7. (Possibly gyroscope)
+8. Several resistor 220 ohm
+9. Several resistor 10k ohm
