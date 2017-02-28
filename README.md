@@ -21,7 +21,7 @@ From researching sites such as “http://shakethatbutton.com” I came across a 
 The rotary encoder is probably going to be the biggest challenge for me in the project. So far I have figured out the basics needed for setting up a simple led light toggle using a button (fig 1). Although the next step from here would be to only allow the led to turn on when the charge variable in the game is above a certain level.
 What I plan on doing is simply having the rotary encoder send its input to the game and store that as the charge value. 
 
-![alt text]("https://i.gyazo.com/388951acfa3536296f71337bc98fabe8.png")
+![alt text](https://i.gyazo.com/388951acfa3536296f71337bc98fabe8.png)
 (This image shows a diagram of circuit needed for turning an led on based on a button press)
 
 ## Materials needed:
