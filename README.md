@@ -42,10 +42,10 @@ The usb for the Arduino runs through the bottom of the tube. In the end, I didn'
 ![alt text](https://i.gyazo.com/864ccf3f08dcbb4bc1dcd67864f262f7.jpg)
 (Final controller)
 
-![alt text](https://i.gyazo.com/bb2b658978eb5b88061d076cea76b813.jpg)
+![alt text](https://i.gyazo.com/cfb3a0005b6e3b300bab8c6c27daa1bc.jpg)
 (Joy stick)
 
-![alt text](https://i.gyazo.com/cfb3a0005b6e3b300bab8c6c27daa1bc.jpg)
+![alt text](https://i.gyazo.com/bb2b658978eb5b88061d076cea76b813.jpg)
 (Switch/Button)
 
 ![alt text](https://i.gyazo.com/a85e125c5fb2de6ba1f90919fe84310b.jpg)
