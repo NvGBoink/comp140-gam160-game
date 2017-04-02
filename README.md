@@ -40,8 +40,19 @@ My final controller is a Pringles tube with a switch on the underside, a fishing
 The usb for the Arduino runs through the bottom of the tube. In the end, I didn't add the led's to the front of the torch due to the lack of room. I was worried if I was to add more wired and components it would end up damaging the vital components making the controller useless. 
 
 ![alt text](https://gyazo.com/864ccf3f08dcbb4bc1dcd67864f262f7)
+(Final controller)
+
 ![alt text](https://gyazo.com/bb2b658978eb5b88061d076cea76b813)
+(Joy stick)
+
 ![alt text](https://gyazo.com/cfb3a0005b6e3b300bab8c6c27daa1bc)
+(Switch/Button)
+
 ![alt text](https://gyazo.com/a85e125c5fb2de6ba1f90919fe84310b)
+(Fishing reel / Crank)
+
 ![alt text](https://gyazo.com/f759d6547f41eb60aa3c7a3d43d7af55)
+(Ardunio)
+
 ![alt text](https://gyazo.com/df33f0ca5eda8272d11b5c535c564a68)
+(Inside the Pringles tube)
