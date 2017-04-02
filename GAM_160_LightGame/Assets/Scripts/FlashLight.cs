@@ -24,12 +24,9 @@ public class FlashLight : MonoBehaviour {
         }
     }
 
-    public void ReciveInput(float chargeInput, bool toggleLight)
+    public void ReciveInput(float chargeInput, bool buttonState)
     {
-        if (toggleLight)
-        {
-            isOn = !isOn;
-        }
+        isOn = buttonState;
 
         if (chargeInput > 0) //Make sure we can't remove power if the crank is being turned backwards
         {

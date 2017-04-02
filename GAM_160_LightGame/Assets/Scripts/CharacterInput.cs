@@ -5,17 +5,22 @@ using System.IO.Ports;
 public class CharacterInput : MonoBehaviour {
 
     public KeyCode sneakKey = KeyCode.LeftShift;
-    public KeyCode flashLightKey = KeyCode.Mouse0;
 
     CharacterMotor charMotor;
     MouseRotation mouseRotation;
     FlashLight flashLight;
 
-    SerialPort sp = new SerialPort("COM3", 9600);
-    float prevFrameCrankValue = 0;
+    //Find the ardunio if it is on communication port 3, if it's not this needs to be changed
+    SerialPort sp = new SerialPort("COM3", 9600); 
+
+    float deadZone = 0.5f; //Dead zone stops input for being picked up from the analog stick if it's either side of 512
     float chargeInput = 0;
-    bool toggleLight = false;
+    float crankValue = 0;
+    float prevFrameCrankValue = 0; //Previous frame value is used to check if the value is different from the previous frame
+    float horInput = 0, verInput = 0;
     bool isCranking = false;
+    bool toggleLight = false;
+
 
     void Awake()
     {
@@ -44,50 +49,66 @@ public class CharacterInput : MonoBehaviour {
 
         if (mouseRotation != null)
         {
-            float hor = Input.GetAxis("Mouse X");
-            float ver = Input.GetAxis("Mouse Y");
+            float hor = 0;
+            float ver = 0;
 
-            mouseRotation.ReciveInput(hor, ver);
+            float horDiff = horInput - 507;
+            if (horInput > 507f + deadZone || horInput < 507f - deadZone) //Dead zone
+            {
+                hor = horDiff / 507;
+            }
+
+            float verDiff = verInput - 514;
+            if (verInput > 514f + deadZone || verInput < 514f - deadZone) //Dead zone
+            {
+                ver = verDiff / 514;
+            }
+
+            mouseRotation.ReciveInput(-hor, -ver);
         }
 
         if (flashLight != null)
         {
-            chargeInput = isCranking ? 0.1f : 0;
+            isCranking = (crankValue != prevFrameCrankValue);
+            chargeInput = isCranking ? 5f : 0;
+            crankValue = prevFrameCrankValue;
 
             flashLight.ReciveInput(chargeInput, toggleLight);
         }
 
         //Ardunio
-        if (sp.IsOpen)
+        if (sp.IsOpen) //Is the port open ?
         {
-            string inputData = "";
+            string inputData = ""; 
 
             try
             {
-                inputData = sp.ReadLine();
+                inputData = sp.ReadLine(); //Store the line
             }
             catch (System.Exception)
             {
 
             }
 
-            if (inputData == "")
+            if (inputData == "") // If no line was found we can not continue
                 return;
 
-            //Debug.Log(inputData);
-
-            char iD = inputData[0];
-            float newValue = float.Parse(inputData.Substring(1));
+            char iD = inputData[0]; //Get the first character from the line, this is the tag and will tell us what to use the data for
+            float newValue = float.Parse(inputData.Substring(1)); //Remove the tag
 
             switch (iD)
             {
                 case 'C':
-                    isCranking = (newValue != prevFrameCrankValue);
-                    Debug.Log(newValue);
-                    prevFrameCrankValue = newValue;
+                    crankValue = newValue;
                     break;
                 case 'B':
                     toggleLight = (newValue == 1) ? true : false;
+                    break;
+                case 'H':
+                    horInput = newValue;
+                    break;
+                case 'V':
+                    verInput = newValue;
                     break;
             }
         }
