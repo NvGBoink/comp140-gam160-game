@@ -1,36 +1,51 @@
-    /*     Arduino Rotary Encoder Tutorial
-     *      
-     *  by Dejan Nedelkovski, www.HowToMechatronics.com
-     *  
+    /*
+     * This code was based originally of the 'Arduino Rotary Encoder Tutorial' by Dejan Nedelkovski, www.HowToMechatronics.com
+     * The button and analog stick was
      */
      
-     #define outputA 6
-     #define outputB 7
+     int outputA = 6;
+     int outputB = 7;
      int counter = 0; 
-     int aState;
-     int aLastState;  
-     int buttonState = 0;  
-
+     int curCrankState = 0;
+     int prevCrankState = 0;  
+     
+     int buttonVal = 0;  
+     int analogVerVal = 0;
+     int analogHorVal = 0;
+     
+     const int analogVerPin = 1;
+     const int analogHorPin = 2;
      const int buttonPin = 2; 
      
-     void setup() { 
+     void setup() 
+     { 
        pinMode (outputA,INPUT);
        pinMode (outputB,INPUT);
        pinMode(buttonPin, INPUT);
        
        Serial.begin (9600);
-       // Reads the initial state of the outputA
-       aLastState = digitalRead(outputA);   
+       prevCrankState = digitalRead(outputA);   
        digitalWrite(buttonPin, HIGH);
      } 
-     void loop() { 
+     void loop() 
+     { 
+       //Analog stick
+       analogVerVal = analogRead(analogVerPin);
+       delay(100);  
+       analogHorVal = analogRead(analogHorPin);
+       Serial.print("H"); //H tags it for horizontal input
+       Serial.println(analogHorVal);
+
+       Serial.print("V"); //V tags it for vertical input
+       Serial.println(analogVerVal);
+       delay(1);
 
        //Button
-       buttonState = digitalRead(buttonPin);
+       buttonVal = digitalRead(buttonPin);
      
-       if (buttonState == HIGH)
+       if (buttonVal == HIGH)
        {
-          Serial.print("B1");
+          Serial.print("B1"); //B tags it for button input
           Serial.println();
           Serial.flush();
           delay(20);
@@ -43,20 +58,21 @@
        }
 
       //Crank
-       aState = digitalRead(outputA); // Reads the "current" state of the outputA
-       // If the previous and the current state of the outputA are different, that means a Pulse has occured
-       if (aState != aLastState){     
-         // If the outputB state is different to the outputA state, that means the encoder is rotating clockwise
-         if (digitalRead(outputB) != aState) { 
+       curCrankState = digitalRead(outputA);
+       if (curCrankState != prevCrankState)
+       {     
+         if (digitalRead(outputB) != curCrankState) 
+         { 
            counter ++;
-         } else {
+         } 
+         else 
+         {
            counter --;
-         }
-             
-          Serial.print("C");
+         }            
+          Serial.print("C"); //C tags it for crank input
           Serial.println(counter);
           Serial.flush();
           delay(10);
        } 
-       aLastState = aState; // Updates the previous state of the outputA with the current state
+       prevCrankState = curCrankState; 
      }
